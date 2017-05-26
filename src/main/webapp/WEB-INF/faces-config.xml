@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+    <application>
+        <locale-config>
+            <default-locale>es_PE</default-locale>
+        </locale-config>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        <message-bundle>fooddelivery</message-bundle>
+        <resource-bundle>
+            <base-name>fooddelivery</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+
+    <factory>
+        <exception-handler-factory>org.wifry.fooddelivery.exceptions.CustomExceptionHandlerFactory
+        </exception-handler-factory>
+        <render-kit-factory>org.omnifaces.renderkit.Html5RenderKitFactory</render-kit-factory>
+    </factory>
+
+    <!--  <factory>
+          <exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
+      </factory>-->
+
+
+</faces-config>

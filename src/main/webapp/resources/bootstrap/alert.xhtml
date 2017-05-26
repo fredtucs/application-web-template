@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+<!-- INTERFACE -->
+<cc:interface>
+</cc:interface>
+
+<!-- IMPLEMENTATION -->
+<cc:implementation>
+    <c:forEach var="message" items="#{facesContext.messageList}">
+        <c:if test="#{message.severity == 'ERROR 2'}">
+            <div class="alert alert-error alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&#215;</button>
+                <h4>#{message.summary}</h4>
+                #{message.detail}
+            </div>
+        </c:if>
+        <c:if test="#{message.severity == 'WARN 1'}">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&#215;</button>
+                <h4>#{message.summary}</h4>
+                #{message.detail}
+            </div>
+        </c:if>
+        <c:if test="#{message.severity == 'INFO 0'}">
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&#215;</button>
+                <h4>#{message.summary}</h4>
+                #{message.detail}
+            </div>
+        </c:if>
+    </c:forEach>
+</cc:implementation>
+</html>

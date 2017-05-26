@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+    <f:facet name="first">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    </f:facet>
+
+    <title>${msg.globalTitle}</title>
+
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/webjars/bootstrap/3.3.6/css/bootstrap.min-jsf.css"/>
+
+    <!-- Font Awesome -->
+    <h:outputStylesheet library="webjars" name="font-awesome/4.6.3/css/font-awesome.min-jsf.css"/>
+    <!-- Ionicons -->
+    <h:outputStylesheet library="webjars" name="ionicons/2.0.1/css/ionicons.min.css"/>
+
+    <h:outputStylesheet library="webjars" name="bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css"/>
+    <h:outputStylesheet library="webjars" name="bootstrap-select/1.10.0/dist/css/bootstrap-select.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/AdminLTE.css"/>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/screen.css"/>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <!-- <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/skins/skin-red.css"/>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/bootstrap-duallistbox.css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</h:head>
+<!-- ADD THE CLASS sidedar-collapse TO HIDE THE SIDEBAR PRIOR TO LOADING THE SITE -->
+<body class="hold-transition skin-red sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <header class="main-header">
+        <ui:insert name="header">
+            <ui:include src="../common/header.xhtml"/>
+        </ui:insert>
+    </header>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+        <ui:include src="../common/menu.xhtml"/>
+    </aside>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <ui:insert name="content">
+            <h2>This is page1 content</h2>
+        </ui:insert>
+    </div><!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+        <ui:insert name="footer">
+            <ui:include src="../common/footer.xhtml"/>
+        </ui:insert>
+    </footer>
+
+</div><!-- ./wrapper -->
+
+<!-- jQuery 2.1.4 -->
+<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+<!-- Bootstrap 3.3.7 -->
+<h:outputScript library="webjars" name="bootstrap/3.3.6/js/bootstrap.min.js" />
+
+<!--Bootstrap Datepicker-->
+<h:outputScript library="webjars" name="bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"/>
+<h:outputScript library="webjars" name="bootstrap-datepicker/1.6.1/locales/bootstrap-datepicker.es.min.js"/>
+
+<h:outputScript library="plugins" name="number/jquery.number.js" target="head"/>
+<h:outputScript library="plugins" name="number/numericInput.js" target="head"/>
+<h:outputScript library="webjars" name="slimScroll/1.3.3/jquery.slimscroll.min.js" target="head"/>
+<h:outputScript library="webjars" name="bootstrap-select/1.10.0/dist/js/bootstrap-select.min.js" target="head"/>
+<!--&lt;!&ndash; FastClick &ndash;&gt;
+<script src="../../plugins/fastclick/fastclick.min.js"></script>-->
+<!-- AdminLTE App -->
+<h:outputScript library="js" name="jquery.bootstrap-duallistbox.js"/>
+<h:outputScript library="js" name="app.js"/>
+<h:outputScript library="js" name="utils.js"/>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="sitesdb">
+
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@10.24.9.6:1521:orcl</property>
+        <property name="connection.username">SITESDEV</property>
+        <property name="connection.password">1234560</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="connection.url">jdbc:mysql://localhost/sitesdb</property>-->
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password"></property>-->
+        <!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
+
+        <!-- Configuracion del pool interno -->
+        <property name="connection.pool_size">1</property>
+        <!-- Otras propiedades importantes -->
+        <property name="show_sql">true</property>
+        <mapping package="org.wifry.fooddelivery.model"/>
+
+    </session-factory>
+</hibernate-configuration>

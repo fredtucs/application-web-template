@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view contentType="text/html">
+    <h:head>
+        <title>Error del Sistema</title>
+        <meta http-equiv="refresh" content="5;url=#{request.contextPath}/login.html"/>
+        <h:outputStylesheet library="css" name="screen.css"/>
+    </h:head>
+    <h:body>
+        <div style="text-align: center;">
+            <h1>Error del Sistema Interno</h1>
+
+            <p><h:outputText value="#{msg.errorMessage}"/></p>
+
+            <p><a href="#{request.contextPath}/index.jsp"><h:outputText value="#{msg.clickRedirec}"/></a>.</p>
+        </div>
+    </h:body>
+</f:view>
+</html>

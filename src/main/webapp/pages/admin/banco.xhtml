@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ph="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:sec="http://www.springframework.org/security/facelets/tags"
+                template="/templates/layout/main-layout.xhtml">
+    <f:metadata>
+        <f:viewAction action="#{bancoBean.listar}"/>
+    </f:metadata>
+    <ui:define name="content">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="pull-right" jsf:rendered="#{sec:ifAnyGranted('BANCO_CREATE')}">
+                    <h:form>
+                        <h:commandLink class="btn btn-primary" title="#{msg.nuevo}">
+                            <i class="fa fa-plus"/>
+                            <p:ajax listener="#{bancoBean.nuevo}" update=":fmEditBanco"
+                                    oncomplete="handleSubmitShow(xhr, status, args, 'dlgEditBanco')"/>
+                        </h:commandLink>
+                    </h:form>
+                </div>
+                <h1>#{msg.banco}</h1>
+                <ul class="breadcrumb">
+                    <li><a jsf:outcome="/pages/home.html">#{msg.inicio}</a></li>
+                    <li class="active">#{msg.banco}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <h:form id="fmBancos">
+                <p:messages id="messages" closable="true" globalOnly="true"/>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-list"/> #{msg.listade} #{msg.banco}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <p:dataTable id="dtBancos" var="bn" reflow="true"
+                                         tableStyleClass="table table-bordered table-hover"
+                                         value="#{bancoBean.bancoList}"
+                                         rowKey="#{bn.idBanco}" rowIndexVar="rowIndex"
+                                         selection="#{bancoBean.banco}"
+                                         selectionMode="single" rows="15" paginator="true" paginatorPosition="bottom">
+
+                                <p:column headerText="#{msg.banco}" width="auto">
+                                    <h:outputText value="#{bn.nombre}" style="white-space:normal;"/>
+                                </p:column>
+
+                                <p:column headerText="..." width="10%"
+                                          style="text-align:center">
+                                    <h:commandLink styleClass="btn btn-default btn-xs" action="#{bancoBean.editar}" title="#{msg.editar}"
+                                                   rendered="#{sec:ifAnyGranted('BANCO_EDIT')}">
+                                        <f:passThroughAttribute name="data-toggle" value="tooltip"/>
+                                        <i class="fa fa-pencil" aria-hidden="true"/>
+                                        <f:setPropertyActionListener target="#{bancoBean.banco}" value="#{bn}"/>
+                                        <p:ajax process="@this" oncomplete="handleSubmitShow(xhr, status, args, 'dlgEditBanco')"
+                                                update="dtBancos :fmEditBanco"/>
+                                    </h:commandLink>
+
+                                    <span data-toggle="tooltip" title="#{msg.eliminar}" jsf:rendered="#{sec:ifAnyGranted('BANCO_DELETE')}">
+                                    <h:commandLink styleClass="btn btn-default btn-xs btnConfirmDelete" ph:data-index="#{bn.idBanco}"
+                                                   ph:data-entity-id="#{bn.nombre}" ph:data-message="#{msg.msgEliminar}"
+                                                   ph:data-toggle="modal" ph:data-target="#dlgConfirmDelete">
+                                        <i class="fa fa-trash" aria-hidden="true"/>
+                                        <p:ajax process="@this" update=":fmConfirmDelete"/>
+                                    </h:commandLink>
+                                    </span>
+
+                                    <h:commandLink class="btn btn-default btn-xs" action="#{bancoBean.editaEstado}"
+                                                   title="#{bn.estado.isActivo()? msg.activo : msg.inact}">
+                                        <f:passThroughAttribute name="data-toggle" value="tooltip"/>
+                                        <i class="fa #{bn.estado.isActivo()?'fa-check-square-o':'fa-square-o'}"/>
+                                        <f:setPropertyActionListener target="#{bancoBean.banco}" value="#{bn}"/>
+                                        <f:ajax execute="@this" render="dtBancos"/>
+                                    </h:commandLink>
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+
+        <!-- Modal Dialog -->
+        <div class="modal draggable fade modalConfirmDelete" id="dlgConfirmDelete" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <h:form role="form" id="fmConfirmDelete">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#215;</button>
+                            <h4 class="modal-title">#{msg.eliminar} #{msg.banco}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="index" name="index"/>
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">#{msg.cancelar}</button>
+                            <h:commandLink styleClass="btn btn-danger" action="#{bancoBean.eliminar}">
+                                <i class="fa fa-pencil" aria-hidden="true"/> #{msg.eliminar}
+                                <p:ajax process="fmConfirmDelete" oncomplete="handleSubmitHide(xhr, status, args, 'dlgConfirmDelete')"/>
+                            </h:commandLink>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal draggable fade modalForm" id="dlgEditBanco" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <h:form id="fmEditBanco">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&#215;</button>
+                            <h4 class="modal-title"><i class="fa fa-edit"/> #{msg.registro} #{msg.banco}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p:messages id="messagesfm" closable="true"/>
+                            <div class="form-group form-group-sm">
+                                <p:outputLabel styleClass="control-label" for="txtDescripcion" value="#{msg.banco}"/>
+                                <h:inputText styleClass="form-control" id="txtDescripcion" required="true" style="text-transform:uppercase;"
+                                             value="#{bancoBean.banco.nombre}" converter="toUpperCaseConverter"/>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <label class="control-label" for="cbEstado">#{msg.estado}</label>
+                                <h:selectOneMenu styleClass="select form-control" id="cbEstado" required="true"
+                                                 value="#{bancoBean.banco.estado}">
+                                    <f:selectItems value="#{bancoBean.estados}"/>
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandLink class="btn btn-primary" action="#{bancoBean.guardar}">
+                                <i class="fa fa-save"/> #{msg.guardar}
+                                <p:ajax process="fmEditBanco"
+                                        update="@form :fmBancos"
+                                        oncomplete="handleSubmitHide(xhr, status, args, 'dlgEditBanco')"/>
+                            </h:commandLink>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <i class="fa fa-close"/> #{msg.cancelar}
+                            </button>
+                        </div>
+                    </div>
+                    <h:outputScript>
+                        $('select').selectpicker();
+                    </h:outputScript>
+                </h:form>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

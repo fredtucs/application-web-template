@@ -1,0 +1,303 @@
+
+.simbolmoneda {
+    color: #777777;
+    font-size: 0.9em;
+}
+
+.boxdiv {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+}
+
+/* OVER MENU */
+.item-actions {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+}
+
+.item-actions li {
+    float: left;
+    margin-left: 0;
+}
+
+.item-actions a {
+    display: inline-block;
+    font-size: 10px;
+    /*color: #502050;
+    background-color: #ffffff;*/
+    /*border-color: #ccc #c0c0c0 #aaa;*/
+    /*border-radius: 5px;*/
+    /*border-style: solid;*/
+    /*border-width: 1px;*/
+    /*border: 1px solid #d8dcdf;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);*/
+
+}
+
+.over-menu {
+    position: relative;
+    padding-right: 5px;
+    padding-left: 3px;
+    vertical-align: middle;
+}
+
+tr td.over-menu .item-actions {
+    display: none;
+    width: auto;
+}
+
+tr:hover td.over-menu .item-actions {
+    position: absolute;
+    z-index: 9999;
+    top: 5px;
+    right: 5px;
+    display: block;
+    vertical-align: bottom;
+}
+
+/* END OVER MENU */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .panel-ajuste {
+
+    }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 321px) {
+    /* Styles */
+    .panel-ajuste {
+        width: 100%;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+    /* Styles */
+    .panel-ajuste {
+        width: 100%;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+    .panel-ajuste {
+        width: 80%;
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Styles */
+    .panel-ajuste {
+        width: 70%;
+    }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* Styles */
+    .panel-ajuste {
+        width: 100%;
+    }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width: 1224px) {
+    /* Styles */
+    .panel-ajuste {
+        width: 60%;
+    }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width: 1280px) {
+    /* Styles */
+    .panel-ajuste {
+        width: 50%;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width: 1824px) {
+    /* Styles */
+    .panel-ajuste {
+        width: 40%;
+    }
+}
+
+.ui-outputlabel .ui-outputlabel-rfi {
+    color: red;
+}
+
+.required:after {
+    content: "*";
+    color: red;
+}
+
+.wordwrap {
+    white-space: pre-wrap; /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* IE */
+}
+
+legend {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.bootstrap-select > button {
+    background-color: transparent;
+}
+
+.anule-row, .anule-row:HOVER {
+    text-decoration: line-through;
+    font-style: italic !important;
+    border: inherit !important;
+}
+
+.truncate-ellipsis {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form-group > .note-frame.panel {
+    margin-bottom: 10px !important;
+}
+
+.ui-button-var {
+    background: none repeat scroll 0 0 transparent !important;
+    border: none !important;
+    height: 1.5em !important;
+    font-size: 10px !important;
+    font-style: italic;
+    font-weight: normal !important;
+}
+
+.ui-button-icon-var {
+    background: none repeat scroll 0 0 transparent !important;
+    border: none !important;
+    height: 1.5em !important;
+    width: 2em !important;
+}
+
+.ui-button-icon-only-var {
+    width: 18px !important;
+}
+
+.ui-icon-seek-next {
+    background-position: -32px -157px;
+}
+
+.ui-icon-seek-prev {
+    background-position: -48px -157px;
+}
+
+.ui-icon-seek-end {
+    background-position: -64px -157px;
+}
+
+.ui-icon-seek-start {
+    background-position: -80px -157px;
+}
+
+.ui-icon-seek-first {
+    background-position: -80px -157px;
+}
+
+/*Style Mega Menu*/
+
+.mega-dropdown-menu {
+    box-shadow: none;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.mega-dropdown-menu > li > ul {
+    padding: 0;
+    margin: 0;
+}
+
+.mega-dropdown-menu .list-unstyled, .list-unstyled ul {
+    min-width: 120px;
+    padding-left: 10px;
+}
+
+.mega-dropdown-menu > li > ul > li {
+    list-style: none;
+}
+
+.mega-dropdown-menu > li > ul > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #999;
+    white-space: normal;
+}
+
+.mega-dropdown-menu > li ul > li > a:hover, .mega-dropdown-menu > li ul > li > a:focus {
+    text-decoration: none;
+    color: #444;
+    background-color: #f5f5f5;
+}
+
+.mega-dropdown-menu .dropdown-header {
+    color: #444;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mega-dropdown-menu form {
+    margin: 3px 20px;
+}
+
+.mega-dropdown-menu .form-group {
+    margin-bottom: 3px;
+}
+
+/*Tags Style*/
+.tag {
+    font-size: 12px;
+    padding: .3em .4em .4em;
+    margin: 0 .1em;
+    cursor: pointer;
+    background-color: #eeeeee !important;
+    border: .1em solid #ddd;
+}
+
+.tag span {
+    color: #444;
+}
+
+.tag a {
+    color: #000000;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.tag a:hover {
+    opacity: 1.0
+}
+
+.tag .remove {
+    color: black;
+}
+
+.tag a {
+    margin: 0 0 0 .3em;
+}
+

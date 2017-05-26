@@ -1,0 +1,32 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:of="http://omnifaces.org/functions" xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <c:set var="currentPage"
+               value="#{facesContext.viewRoot.viewId}#{(empty request.queryString)?'':'?'.concat(request.queryString)}"/>
+
+        <ul class="sidebar-menu">
+            <li class="header">#{msg.menuMain}</li>
+            <li class="treeview #{fn:contains(currentPage,'admin')?'active':''}"
+                jsf:rendered="#{sec:ifAnyGranted('ADMIN_MOD')}">
+                <a href="#">
+                    <i class="fa fa-lock"/> <span>Administracion</span> <i class="fa fa-angle-left pull-right"/>
+                </a>
+                <ul class="treeview-menu ">
+                    <li class="#{fn:contains(currentPage,'banco.xhtml')?'active':''}"
+                        jsf:rendered="#{sec:ifAnyGranted('BANCO_LIST')}">
+                        <a jsf:outcome="/pages/admin/banco.html"><i class="fa fa-circle-o"/> #{msg.banco}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+
+</ui:composition>
